@@ -1,1 +1,1 @@
-This is a simple shell project
+this is our simple shell project me & john
