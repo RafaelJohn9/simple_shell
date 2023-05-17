@@ -1,61 +1,52 @@
+#include "main.h"
 #include <stdio.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include <string.h>
 #include <stdlib.h>
-
-#define MAX_LEN 1024
-
-int main(void)
+#include <string.h>
+#include <unistd.h>
+#include<sys/wait.h>
+int main(int ac, char **av, char **envp)
 {
-	char input[MAX_LEN], *token = NULL, *delim = " \n\t", *arg[MAX_LEN] = {NULL};
-	int count = 0;
-	int *status = malloc(sizeof(int));
-	pid_t child;
+	size_t n;
+	char *sign = "^_^:", **argv = NULL, *buff = NULL, *delim = " \n";
+	int i = 0, argc = 0, err;
+	char *buff_cpy = NULL, *token = NULL, *path = "/bin/";
+	ssize_t exiting;
 
 	while (1)
 	{
-		printf(">>>");
-		if (fgets(input, MAX_LEN, stdin) == NULL || input[0] == '\n')
+		printf("%s",sign);
+		exiting = getline(&buff, &n, stdin);
+		buff_cpy = strdup(buff);
+		token = strtok(buff, delim);
+		if (strcmp(token, "exit") == 0 || exiting == -1)
 		{
-			break;
+			printf("exiting ^_^\n");
+		exit(-1);
 		}
-		token = strtok(input, delim);
-		arg[count++] = strdup(token);
-		while (token)
+	while (token)
 		{
-			token = strtok(NULL, delim);
-			if (token)
-			{
-				arg[count++] = strdup(token);
-			}
+			argc++;
+		token = strtok(NULL, delim);
 		}
-		arg[count] = NULL;
-		child = fork();
-		if (child == 0)
-		{
-			if (execve(arg[0], arg, NULL) == -1)
-			{
-				perror("invalid arg;");
-				break;
-			}
-		}
-		else if (child < 0)
-		{
-			perror("child not responding");
-			exit(-1);
-		}
-		else
-		{
-			waitpid(child, status, 0);
-		}
-		for (int i = 0; i < count; i++)
-		{
-			free(arg[i]);
-			arg[i] = NULL;
-		}
-		count = 0;
+	argv = malloc(sizeof(char*) * argc * 5);
+	token = strtok(buff_cpy, delim);
+	for (i = 0; i < argc; i++)
+	{
+		argv[i] = token;
+		token = strtok(NULL, delim);
 	}
-	free(status);
+	argv[i] = NULL;
+	if (fork() == 0)
+	{
+ 	executing(argv, envp);
+	}
+	else
+	{
+		wait(NULL);
+	argc = 0;
+	printf("lets begin again");
+	}
+	}
+	free(buff_cpy), free(argv);
 	return (0);
-}			
+}
