@@ -5,7 +5,7 @@
 void print_env(void)
 {
 	char **env = environ;
-
+	
 	while (*env != NULL)
 	{
 		printf("%s\n", *env);
@@ -30,22 +30,22 @@ char *envi(char *command)
 	env_token = strtok(cmd_cpy, ":");
 	while (env_token)
 	{
-	token_length = strlen(env_token);
-	env_list = malloc(token_length + command_length + 2);
-	env_list = strdup(env_token);
-	strcat(env_list, "/");
-	strcat(env_list, command);
-	strcat(env_list, "\0");
-	if (stat(env_list, &buffer) == 0)
-	{
-		free(cmd_cpy);
-		return (env_list);
-	}
-	else
-	{
-		free(env_list);
-		env_token = strtok(NULL, ":");
-	}
+		token_length = strlen(env_token);
+		env_list = malloc(token_length + command_length + 2);
+		strcpy(env_list, env_token);
+		strcat(env_list, "/");
+		strcat(env_list, command);
+		printf("Checking:%s\n", env_list); 
+		if (access(env_list, F_OK | X_OK) == 0)
+		{
+			free(cmd_cpy);
+			return (env_list);
+		}
+		else
+		{
+			free(env_list);
+			env_token = strtok(NULL, ":");
+		}
 	}
 	free(cmd_cpy);
 	if (stat(command, &buffer) == 0)
