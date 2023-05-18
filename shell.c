@@ -13,14 +13,15 @@ int main(int ac, char **av, char **envp)
 	ssize_t exiting;
 
 	while (1)
-	{
-		printf("%s",sign);
-		exiting = getline(&buff, &n, stdin);
+		{
+	write(STDIN_FILENO, "^_^ ", 4);
+		exiting = _getline(&buff, &n, stdin);
 		buff_cpy = strdup(buff);
 		token = strtok(buff, delim);
 		if (strcmp(token, "exit") == 0 || exiting == -1)
 		{
-			printf("exiting ^_^\n");
+			fflush(stdin);
+			printf("Exiting ..\n");
 		exit(-1);
 		}
 	while (token)
@@ -44,9 +45,7 @@ int main(int ac, char **av, char **envp)
 	{
 		wait(NULL);
 	argc = 0;
-	printf("lets begin again");
 	}
 	}
-	free(buff_cpy), free(argv);
 	return (0);
 }
