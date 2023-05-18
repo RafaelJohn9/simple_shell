@@ -11,5 +11,5 @@ void executing(char **argv, char **envp)
 	path = envi(argv[0]);
 	err = execve(path,  argv, envp);
 	if (err == -1)
-		perror("ERROR");
+		_err(argv[0]);
 }

@@ -7,4 +7,6 @@
 #include <sys/types.h>
 char  *envi(char *command);
 void executing(char **argv, char **envp);
+ssize_t _getline(char **line, size_t *n, FILE *fp);
+void _err(char *arg);
 
