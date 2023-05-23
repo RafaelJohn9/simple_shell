@@ -15,25 +15,27 @@ char *envi(char *command)
 	env_token = strtok(cmd_cpy, ":");
 	while (env_token)
 	{
-	token_length = strlen(env_token);
-	env_list = malloc(token_length + command_length + 2);
-	env_list = strdup(env_token);
-	strcat(env_list, "/");
-	strcat(env_list, command);
-	strcat(env_list, "\0");
-	if ( stat(env_list, &buffer) == 0)
-	{
-		free(cmd_cpy);
-		return (env_list);
-	}
-	else
-	{
-		free(env_list);
-		env_token = strtok( NULL , ":");
-	}
+		token_length = strlen(env_token);
+		env_list = malloc(token_length + command_length + 2);
+		env_list = strdup(env_token);
+		strcat(env_list, "/");
+		strcat(env_list, command);
+		strcat(env_list, "\0");
+		if ( stat(env_list, &buffer) == 0)
+		{
+			free(cmd_cpy);
+			return (env_list);
+		}
+		else
+		{
+			free(env_list);
+			env_token = strtok( NULL , ":");
+		}
 	}
 	free(cmd_cpy);
 	if (stat(command, &buffer) == 0)
+	{
 		return(command);
+	}
 	return (NULL);
 }

@@ -9,7 +9,7 @@
  * @delim: the delimiters
  * Return: token
  **/
-char*  _strtok(char *string, const char *delim)
+char *  _strtok(char *string, const char *delim)
 {
 	static char *str = NULL;
 	char *buffer = malloc(sizeof(MAX));
