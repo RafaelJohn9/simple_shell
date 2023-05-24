@@ -15,6 +15,7 @@ ssize_t _getline(char **line, size_t *n, FILE *fp)
 	char *buff;
 	char c;
 
+	(void)n;
 	if (j == 0)
 	{
 		fflush(fp);
@@ -24,19 +25,15 @@ ssize_t _getline(char **line, size_t *n, FILE *fp)
 		return (-1);
 	}
 	j = 0;
-	buff = malloc(sizeof(char) * (*n));
+	buff = malloc(sizeof(char) * bufflen);
 	while (c != '\n')
 	{
-		if (i == (int)(*n) - 1)
-		{
-			buff = realloc(buff, bufflen);
-		}
-		else if (i == (int)bufflen - 1)
+		 if (j == (int)bufflen - 1)
 		{
 			bufflen = bufflen * 2;
 			buff = realloc(buff, bufflen);
 		}
-		c = fgetc(fp);
+		i = read(STDIN_FILENO, &c, 1);
 		if (1 == -1 || (i == 0 && j == 0))
 		{
 			free(buff);

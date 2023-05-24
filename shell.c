@@ -3,7 +3,7 @@ int main(int ac, char **av, char **envp)
 {
 	size_t n;
 	char **argv = NULL, *buff = NULL, *delim = " \n";
-	int i = 0, argc = 0;
+	int i = 0, argc = 0, exitv;
 	char *buff_cpy = NULL, *token = NULL, *token2 = NULL;
 	ssize_t exiting;
 
@@ -11,30 +11,10 @@ int main(int ac, char **av, char **envp)
 	(void)av;
 	while (1)
 	{
-		write(STDIN_FILENO, "^_^: ", 4);
-		exiting = getline(&buff, &n, stdin);
+		write(STDIN_FILENO, "#: ", 3);
+		exiting = _getline(&buff, &n, stdin);
 		buff_cpy = strdup(buff);
-		if (buff_cpy == NULL)
-		{
-			continue;
-		}
 		token = strtok(buff, delim);
-		if (strcmp(token, "exit") == 0 || exiting == -1)
-		{
-			token = strtok(NULL, delim);
-			if (token)
-			{
-				printf("%s\n", token);
-			}
-			exit(-1);
-		}
-		else if (strcmp(token, "cd") == 0)
-		{
-			token = strtok(NULL, delim);
-			token2 = strtok(NULL, delim);
-			changedir((const char *)token, token2);
-			continue;
-		}
 		while (token)
 		{
 			argc++;
@@ -47,11 +27,12 @@ int main(int ac, char **av, char **envp)
 			argv[i] = token;
 			token = strtok(NULL, delim);
 		}
+		exitv = _iexit(argv);
+		if (exitv != -1)
+			exit(exitv);
 		argv[i] = NULL;
 		if (fork() == 0)
-		{
 			executing(argv, envp);
-		}
 		else
 		{
 			wait(NULL);

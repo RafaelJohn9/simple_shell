@@ -14,7 +14,7 @@ void executing(char **argv, char **envp);
 ssize_t _getline(char **line, size_t *n, FILE *fp);
 void _err(char *arg);
 void changedir(const char *str1, char *str2);
-
+int _iexit(char **argv);
 
 
 #endif
