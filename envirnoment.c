@@ -8,7 +8,7 @@ char *envi(char *command)
 	char *env_token = NULL;
 	int command_length, token_length;
 	struct stat buffer;
-	
+
 	cmd = getenv("PATH");
 	cmd_cpy = strdup(cmd);
 	command_length = strlen(command);
@@ -19,14 +19,14 @@ char *envi(char *command)
 		env_list = malloc(token_length + command_length + 2);
 		if (env_list == NULL)
 		{
-		free(cmd_cpy);
+		free(cmd);
 		return (0);
-		}	
+		}
 		env_list = strdup(env_token);
 		strcat(env_list, "/");
 		strcat(env_list, command);
 		strcat(env_list, "\0");
-		if ( stat(env_list, &buffer) == 0)
+		if (stat(env_list, &buffer) == 0)
 		{
 			free(cmd_cpy);
 			return (env_list);
@@ -39,8 +39,7 @@ char *envi(char *command)
 	}
 	free(cmd_cpy);
 	if (stat(command, &buffer) == 0)
-	{
 		return(command);
-	}
+
 	return (NULL);
 }
