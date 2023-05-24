@@ -17,7 +17,7 @@ int main(__attribute__((unused))int ac, __attribute__((unused))char **av, char *
 	while (1)
 	{
 		write(STDIN_FILENO, "$ ", 4);
-		exiting = _getline(&buff, &n, stdin);
+		exiting = getline(&buff, &n, stdin);
 		buff_cpy = strdup(buff);
 		token = strtok(buff, delim);
 		while (token)
@@ -44,5 +44,7 @@ int main(__attribute__((unused))int ac, __attribute__((unused))char **av, char *
 			argc = 0;
 		}
 	}
+		free(argv);
+		free(buff_cpy);
 	return (0);
 }
