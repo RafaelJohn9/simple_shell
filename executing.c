@@ -8,7 +8,7 @@ void executing(char **argv, char **envp)
 	char *path = NULL;
 	int err;
 
-	else if(strcmp(argv[0], "cd") == 0)
+	if(strcmp(argv[0], "cd") == 0)
 	{
 	changedir((const char *)argv[1], argv[2]);
 	}

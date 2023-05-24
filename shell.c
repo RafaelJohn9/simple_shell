@@ -1,14 +1,19 @@
 #include "main.h"
-int main(int ac, char **av, char **envp)
+/**
+ * main - this is our shell
+ * @ac: unusedparam
+ * @av: unusedparam
+ * @envp: the env param
+ * return: exit value
+ */
+int main(__attribute__((unused))int ac, __attribute__((unused))char **av, char **envp)
 {
 	size_t n;
 	char **argv = NULL, *buff = NULL, *delim = " \n";
-	int i = 0, argc = 0, exitv;
-	char *buff_cpy = NULL, *token = NULL, *token2 = NULL;
+	int i = 0, argc = 0, exitv = -1;
+	char *buff_cpy = NULL, *token = NULL;
 	ssize_t exiting;
 
-	(void)ac;
-	(void)av;
 	while (1)
 	{
 		write(STDIN_FILENO, "#: ", 3);
@@ -28,7 +33,7 @@ int main(int ac, char **av, char **envp)
 			token = strtok(NULL, delim);
 		}
 		exitv = _iexit(argv);
-		if (exitv != -1)
+		if (exitv != -1 || exiting == -1)
 			exit(exitv);
 		argv[i] = NULL;
 		if (fork() == 0)
