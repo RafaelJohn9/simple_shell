@@ -22,6 +22,8 @@ int main(__attribute__((unused))int ac, __attribute__((unused))char **av, char *
 		exit(EXIT_SUCCESS);
 		buff_cpy = strdup(buff);
 		token = strtok(buff, delim);
+		if (token == NULL)
+			continue;
 		while (token)
 		{
 			argc++;
