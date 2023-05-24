@@ -16,7 +16,7 @@ int main(__attribute__((unused))int ac, __attribute__((unused))char **av, char *
 
 	while (1)
 	{
-		write(STDIN_FILENO, "#: ", 3);
+		write(STDIN_FILENO, "$ ", 4);
 		exiting = _getline(&buff, &n, stdin);
 		buff_cpy = strdup(buff);
 		token = strtok(buff, delim);
