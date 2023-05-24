@@ -11,7 +11,7 @@ int main(int ac, char **av, char **envp)
 	(void)av;
 	while (1)
 	{
-		write(STDIN_FILENO, "^_^ ", 4);
+		write(STDIN_FILENO, "^_^: ", 4);
 		exiting = getline(&buff, &n, stdin);
 		buff_cpy = strdup(buff);
 		if (buff_cpy == NULL)
