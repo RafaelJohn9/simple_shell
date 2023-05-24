@@ -17,6 +17,11 @@ char *envi(char *command)
 	{
 		token_length = strlen(env_token);
 		env_list = malloc(token_length + command_length + 2);
+		if (env_list == NULL)
+		{
+		free(cmd_cpy);
+		return (0);
+		}	
 		env_list = strdup(env_token);
 		strcat(env_list, "/");
 		strcat(env_list, command);

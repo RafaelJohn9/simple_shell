@@ -31,7 +31,10 @@ int main(__attribute__((unused))int ac, __attribute__((unused))char **av, char *
 		}
 		argv = malloc(sizeof(char *) * argc * 5);
 		if (!argv)
+		{
+			free(buff_cpy);
 			return (0);
+		}
 		token = strtok(buff_cpy, delim);
 		for (i = 0; i < argc; i++)
 		{
@@ -52,5 +55,6 @@ int main(__attribute__((unused))int ac, __attribute__((unused))char **av, char *
 	}
 		free(argv);
 		free(buff_cpy);
-	return (0);
+		free(buff);
+		return (0);
 }
