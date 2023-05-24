@@ -26,6 +26,8 @@ int main(__attribute__((unused))int ac, __attribute__((unused))char **av, char *
 			token = strtok(NULL, delim);
 		}
 		argv = malloc(sizeof(char *) * argc * 5);
+		if (!argv)
+			return (0);
 		token = strtok(buff_cpy, delim);
 		for (i = 0; i < argc; i++)
 		{
