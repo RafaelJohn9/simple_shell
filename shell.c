@@ -49,9 +49,9 @@ int main(__attribute__((unused))int ac, __attribute__((unused))char **av, char *
 			wait(NULL);
 			argc = 0;
 		}
-	}
 		free(argv);
 		free(buff_cpy);
 		free(buff);
-		return (0);
+	}
+	return (0);
 }
