@@ -18,6 +18,8 @@ int main(__attribute__((unused))int ac, __attribute__((unused))char **av, char *
 	{
 		write(STDIN_FILENO, "$ ", 4);
 		exiting = getline(&buff, &n, stdin);
+		if (exiting == -1)
+		exit(EXIT_SUCCESS);
 		buff_cpy = strdup(buff);
 		token = strtok(buff, delim);
 		while (token)
@@ -35,7 +37,7 @@ int main(__attribute__((unused))int ac, __attribute__((unused))char **av, char *
 			token = strtok(NULL, delim);
 		}
 		exitv = _iexit(argv);
-		if (exitv != -1 || exiting == -1)
+		if (exitv != -1)
 			exit(exitv);
 		argv[i] = NULL;
 		if (fork() == 0)
