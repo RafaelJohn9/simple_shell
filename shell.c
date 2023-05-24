@@ -14,6 +14,10 @@ int main(int ac, char **av, char **envp)
 		write(STDIN_FILENO, "^_^ ", 4);
 		exiting = getline(&buff, &n, stdin);
 		buff_cpy = strdup(buff);
+		if (buff_cpy == NULL)
+		{
+			continue;
+		}
 		token = strtok(buff, delim);
 		if (strcmp(token, "exit") == 0 || exiting == -1)
 		{
@@ -36,7 +40,7 @@ int main(int ac, char **av, char **envp)
 			argc++;
 			token = strtok(NULL, delim);
 		}
-		argv = malloc(sizeof(char*) * argc * 5);
+		argv = malloc(sizeof(char *) * argc * 5);
 		token = strtok(buff_cpy, delim);
 		for (i = 0; i < argc; i++)
 		{
