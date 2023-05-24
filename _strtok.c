@@ -12,12 +12,13 @@
 char *  _strtok(char *string, const char *delim)
 {
 	static char *str = NULL;
-	char *buffer = malloc(MAX);
+	char *buffer;
 	int i = 0, j = 0, k = 0;
 	
+	buffer = malloc(MAX);
 	if (buffer == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 	if (string != NULL)
 	{
@@ -35,7 +36,8 @@ char *  _strtok(char *string, const char *delim)
 			if (delim[j] == str[i])
 			{
 				str = &str[i + 1];
-				return (buffer);			}
+				return (buffer);
+			}
 			j++;
 		}
 		buffer[k++] = str[i++];
