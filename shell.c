@@ -9,7 +9,7 @@
 int main(int ac, __attribute__((unused))char **av, char **envp)
 {
 	char **argv = NULL, *buff = NULL;
-	int exitv;
+	int exitv, j;
 
 	(void)ac;
 	while (1)
@@ -26,7 +26,15 @@ int main(int ac, __attribute__((unused))char **av, char **envp)
 		}
 		buff = command(argv[0]);
 		if (buff)
+		{
 			executing(buff, argv, envp);
+			free(buff);
+			for (j = 0; argv[j] != NULL; j++)
+			{
+				free(argv[j]);
+			}
+			free(argv);
+		}
 		else
 			continue;
 	}

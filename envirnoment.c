@@ -31,12 +31,14 @@ char *envi(char *command)
 		strcpy(env_list, env_token);
 		strcat(env_list, "/");
 		strcat(env_list, command);
+		strcat(env_list, "\0");
 		if (stat(env_list, &buffer) == 0)
 		{
 			free(cmd_cpy);
 			return (env_list);
 		}
 		free(env_list);
+		env_list = NULL; 
 		env_token = strtok(NULL, ":");
 	}
 	free(cmd_cpy);
