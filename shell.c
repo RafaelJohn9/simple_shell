@@ -14,20 +14,20 @@ int main(int ac, __attribute__((unused))char **av, char **envp)
 	(void)ac;
 	while (1)
 	{
-	write(STDIN_FILENO, ":) ", 4);
-	argv = loop();
-	if (argv == NULL)
-		continue;
-	if (strcmp(argv[0], "exit") == 0)
-	{
-	exitv = _iexit(argv);
-	if (exitv != -1)
-		exit(exitv);
-	}
-	buff = command(argv[0]);
-	if (buff)
-	executing(buff, argv, envp);
-	else
-		continue;
+		write(STDIN_FILENO, ":) ", 4);
+		argv = loop();
+		if (argv == NULL)
+			continue;
+		if (strcmp(argv[0], "exit") == 0)
+		{
+			exitv = _iexit(argv);
+			if (exitv != -1)
+				exit(exitv);
+		}
+		buff = command(argv[0]);
+		if (buff)
+			executing(buff, argv, envp);
+		else
+			continue;
 	}
 }

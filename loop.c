@@ -16,15 +16,28 @@ char **loop(void)
 	if (exiting == -1)
 		exit(EXIT_SUCCESS);
 	buff_cpy = strdup(buff);
+	if (!buff_cpy)
+	{
+		free(buff);
+		return NULL;
+	}
 	token = strtok(buff, " \n");
 	if (!token)
+	{
+		free(buff_cpy);
 		return (NULL);
+	}
 	while (token)
 	{
 		argc++;
 		token = strtok(NULL, " \n");
 	}
-	argv = malloc(sizeof(char *) * argc + 1);
+	argv = malloc(sizeof(char *) * (argc + 1));
+	if (!argv)
+	{
+		free(buff_cpy);
+		return NULL;
+	}
 	argc = 0;
 	i = 0;
 	token = strtok(buff_cpy, " \n");
@@ -34,5 +47,7 @@ char **loop(void)
 		i++;
 		token = strtok(NULL, " \n");
 	}
+	argv[i] = NULL;
+	free(buff);
 	return (argv);
 }

@@ -13,35 +13,34 @@ char *envi(char *command)
 
 	cmd = getenv("PATH");
 	cmd_cpy = strdup(cmd);
+	if (!cmd_cpy)
+	{
+		return (NULL);
+	}
 	command_length = strlen(command);
 	env_token = strtok(cmd_cpy, ":");
 	while (env_token)
 	{
 		token_length = strlen(env_token);
-		env_list = malloc(token_length + command_length + 2);
+		env_list = malloc(token_length + command_length + 3);
 		if (env_list == NULL)
 		{
-		free(cmd);
-		return (0);
+			free(cmd_cpy);
+			return (NULL);
 		}
-		env_list = strdup(env_token);
+		strcpy(env_list, env_token);
 		strcat(env_list, "/");
 		strcat(env_list, command);
-		strcat(env_list, "\0");
 		if (stat(env_list, &buffer) == 0)
 		{
 			free(cmd_cpy);
 			return (env_list);
 		}
-		else
-		{
-			free(env_list);
-			env_token = strtok(NULL, ":");
-		}
+		free(env_list);
+		env_token = strtok(NULL, ":");
 	}
 	free(cmd_cpy);
 	if (stat(command, &buffer) == 0)
-		return (command);
-
+		return (strdup(command));
 	return (NULL);
 }

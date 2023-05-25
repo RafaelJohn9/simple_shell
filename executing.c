@@ -11,9 +11,10 @@ void executing(char *path, char **argv, char **envp)
 
 	if (fork() == 0)
 	{
-	err = execve(path,  argv, envp);
-	if (err == -1)
-		_err(argv[0]);
+		err = execve(path,  argv, envp);
+		if (err == -1)
+			_err(argv[0]);
+		exit(EXIT_FAILURE);
 	}
 	else
 		wait(NULL);
