@@ -1,6 +1,8 @@
 #include "main.h"
 /**
- * this is my envirnoment to deal with path
+ * envi - this is enviro dealing with path
+ * @command: the command to check for
+ * Return: the path that works
  */
 char *envi(char *command)
 {
@@ -34,12 +36,12 @@ char *envi(char *command)
 		else
 		{
 			free(env_list);
-			env_token = strtok( NULL , ":");
+			env_token = strtok(NULL, ":");
 		}
 	}
 	free(cmd_cpy);
 	if (stat(command, &buffer) == 0)
-		return(command);
+		return (command);
 
 	return (NULL);
 }

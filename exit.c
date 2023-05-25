@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * exit - this is the exit func
+ * _iexit - this is the exit func
  * @argv: the command to check
  * Return: -1 if we arent  exit, i
  */

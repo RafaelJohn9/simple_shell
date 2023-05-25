@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * err - this is my error print function
+ * _err - this is my error print function
  * @arg: this is the argument given
  */
 

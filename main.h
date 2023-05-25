@@ -9,9 +9,9 @@
 #include <unistd.h>
 #include <sys/types.h>
 char  *envi(char *command);
-void executing(char **argv, char **envp);
+void executing(char *path, char **argv, char **envp);
 void _err(char *arg);
 int _iexit(char **argv);
-
-
+char *command(char *command);
+char **loop(void);
 #endif
