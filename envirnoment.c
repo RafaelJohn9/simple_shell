@@ -13,10 +13,6 @@ char *envi(char *command)
 
 	cmd = getenv("PATH");
 	cmd_cpy = strdup(cmd);
-	if (!cmd_cpy)
-	{
-		return (NULL);
-	}
 	command_length = strlen(command);
 	env_token = strtok(cmd_cpy, ":");
 	while (env_token)
@@ -38,11 +34,10 @@ char *envi(char *command)
 			return (env_list);
 		}
 		free(env_list);
-		env_list = NULL; 
+		env_list = NULL;
 		env_token = strtok(NULL, ":");
 	}
-	free(cmd_cpy);
 	if (stat(command, &buffer) == 0)
-		return (strdup(command));
+		return (command);
 	return (NULL);
 }

@@ -15,10 +15,9 @@ char *command(char *command)
 	}
 	else
 	{
-		_err(command);
 		free(buff);
+		_err(command);
 		return (NULL);
 	}
-	free(buff);
 	return (NULL);
 }

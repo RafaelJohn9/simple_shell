@@ -14,7 +14,6 @@ void executing(char *path, char **argv, char **envp)
 		err = execve(path,  argv, envp);
 		if (err == -1)
 			_err(argv[0]);
-		exit(EXIT_FAILURE);
 	}
 	else
 		wait(NULL);

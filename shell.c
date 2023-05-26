@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * main - this is our shell
  * @ac: unusedparam
@@ -9,7 +10,7 @@
 int main(int ac, __attribute__((unused))char **av, char **envp)
 {
 	char **argv = NULL, *buff = NULL;
-	int exitv, j;
+	int exitv = -1;
 
 	(void)ac;
 	while (1)
@@ -28,14 +29,10 @@ int main(int ac, __attribute__((unused))char **av, char **envp)
 		if (buff)
 		{
 			executing(buff, argv, envp);
-			free(buff);
-			for (j = 0; argv[j] != NULL; j++)
-			{
-				free(argv[j]);
-			}
-			free(argv);
 		}
-		else
+		free(argv);
+		free(buff);
 			continue;
 	}
+	return (0);
 }
