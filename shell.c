@@ -1,38 +1,44 @@
 #include "main.h"
 
 /**
- * main - this is our shell
- * @ac: unusedparam
- * @av: unusedparam
- * @envp: the env param
- * Return: exit value
+ * main - entry point
+ * @ac: arg count
+ * @av: arg vector
+ *
+ * Return: 0 on success, 1 on error
  */
-int main(int ac, __attribute__((unused))char **av, char **envp)
+int main(int ac, char **av)
 {
-	char **argv = NULL, *buff = NULL;
-	int exitv = -1;
+	info_t info[] = { INFO_INIT };
+	int fd = 2;
 
-	(void)ac;
-	while (1)
+	asm ("mov %1, %0\n\t"
+		"add $3, %0"
+		: "=r" (fd)
+		: "r" (fd));
+
+	if (ac == 2)
 	{
-		write(STDIN_FILENO, ":) ", 4);
-		argv = loop();
-		if (argv == NULL)
-			continue;
-		if (strcmp(argv[0], "exit") == 0)
+		fd = open(av[1], O_RDONLY);
+		if (fd == -1)
 		{
-			exitv = _iexit(argv);
-			if (exitv != -1)
-				exit(exitv);
+			if (errno == EACCES)
+				exit(126);
+			if (errno == ENOENT)
+			{
+				_eputs(av[0]);
+				_eputs(": 0: Can't open ");
+				_eputs(av[1]);
+				_eputchar('\n');
+				_eputchar(BUF_FLUSH);
+				exit(127);
+			}
+			return (EXIT_FAILURE);
 		}
-		buff = command(argv[0]);
-		if (buff)
-		{
-			executing(buff, argv, envp);
-		}
-		free(argv);
-		free(buff);
-			continue;
+		info->readfd = fd;
 	}
-	return (0);
+	populate_env_list(info);
+	read_history(info);
+	hsh(info, av);
+	return (EXIT_SUCCESS);
 }
