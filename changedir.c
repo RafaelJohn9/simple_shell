@@ -89,7 +89,7 @@ int _myhelp(info_t *info)
 	char **arg_array;
 
 	arg_array = info->argv;
-	_puts("Normal bash cmds, such as:\nls\necho\ncd\nwhoami\nand other bash cmds \n");
+	_puts("Shell cmds:\nls\necho\ncd\nwhoami\npwd\nhistory\n\n");
 	if (0)
 		_puts(*arg_array);
 	return (0);

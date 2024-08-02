@@ -2,20 +2,24 @@
 
 ***Demo video***
 
-[![Watch the video](https://img.youtube.com/vi/l0e9i8zXcIs/0.jpg)](https://www.youtube.com/watch?v=l0e9i8zXcIs)
+[![Watch the video](https://img.youtube.com/vi/n3SR9lyYcLE/0.jpg)](https://youtu.be/n3SR9lyYcLE)
 
 ## Why the shell ?
-
-`What I cannot create, I do not understand.
-Know how to solve every problem that has been solved` ~ *Richard Feynman*
-
-For every philosophy there is some truth to  it and for this one we completely agree.
 
 A shell is a **Command Line Interface (CLI)** that allows users to **interact** with the **operating system**. It serves as an intermediary between the user and the operating system, enabling users:
 
 - to execute commands
 - run programs
-- and manage system resources.
+- manage system resources.
+
+Understanding the shell is vital in Software Engineering to understand the Operating Sytem workings such as:
+
+ - file management
+ - process management
+ - memory management
+ - I/O device management
+
+The low level knowledge of the system workings makes understanding complex concepts later on easier.
 
 ----
 
@@ -40,11 +44,11 @@ A shell is a **Command Line Interface (CLI)** that allows users to **interact** 
 - [environment variables](https://www.cs.purdue.edu/homes/bb/cs348/www-S08/unix_path.html)
 
 ----
-As much as we would love to dwelve into [history](https://developer.ibm.com/tutorials/l-linux-shells/), we are not trying to bore you with a lecture on it and so, let's get started with project structure.
+As much as we would love to dwelve into [history of the shell](https://developer.ibm.com/tutorials/l-linux-shells/), we are not trying to bore you with a lecture on it and so, let's get started with project structure.
 
 ```.
 ├── allias.c ----------------> /* Creating alias operations  */
-├── changedir.c ----------------> /*  changing dir operations  */
+├── changedir.c ----------------> /*  Changing dir operations  */
 ├── che.c ----------------> /* Check string operations  */
 ├── envi.c ----------------> /*  Environment variables  Operations  low-level */
 ├── envman.c ----------------> /* Environment variables operations more abstract layer */
@@ -68,3 +72,19 @@ As much as we would love to dwelve into [history](https://developer.ibm.com/tuto
 ├── strman4.c -------------> /* contains string operations functions */
 └── strman.c -------------> /* contains string operations functions */
 ```
+
+----
+
+### Conclusion
+
+Developing this shell project has provided invaluable insights into the fundamental aspects of operating system.
+
+Understanding these concepts is crucial for any software engineer as it lays the groundwork for mastering more advanced topics in systems programming and software development.
+
+We hope this project serves as a practical and educational resource for those looking to deepen their knowledge of shell programming and operating system internals. Feel free to explore the code, experiment with modifications, and expand the functionality further. Happy coding!
+
+For any questions or contributions, please reach out through our [GitHub repository](https://github.com/your-repo-link).
+
+----
+
+Thank you for checking out our project!
