@@ -2,9 +2,9 @@
 
 **Demo video**
 
-<a href="https://www.youtube.com/watch?v=l0e9i8zXcIs" target="_blank">
-  <img src="https://img.youtube.com/vi/l0e9i8zXcIs/0.jpg" alt="Watch the video">
-</a>
+<video width="320" height="240" controls>
+  <source src="https://www.youtube.com/embed/l0e9i8zXcIs" type="video/mp4">
+</video>
 
 
 ## Why the shell ?
@@ -12,7 +12,7 @@
 ` What I cannot create, I do not understand.
 Know how to solve every problem that has been solved` ~ *Richard Feynman*
 
-For every philosophy there is some truth to  it and for this one, I completely agree with this one.
+For every philosophy there is some truth to  it and for this one I completely agree.
 
 A **shell** is a **Command Line-based Interface (CLI)** that enables the Operating System to communicate with the firmware inside a machine.
 
@@ -37,7 +37,7 @@ A **shell** is a **Command Line-based Interface (CLI)** that enables the Operati
 - [error handling](https://www.geeksforgeeks.org/error-handling-in-c/)
 
 ----
-As much as I  love [history](https://developer.ibm.com/tutorials/l-linux-shells/), am not trying to bore you with a lecture on it and so let's get started with building structure.
+As much as I  love [history](https://developer.ibm.com/tutorials/l-linux-shells/), am not trying to bore you with a lecture on it and so let's get started with project roadmap and structure.
 
 ## Roadmap
 
