@@ -2,7 +2,9 @@
 
 **Demo video**
 
-[![Watch the video](https://img.youtube.com/vi/l0e9i8zXcIs/0.jpg)](https://www.youtube.com/watch?v=l0e9i8zXcIs)
+<a href="https://www.youtube.com/watch?v=l0e9i8zXcIs" target="_blank">
+  <img src="https://img.youtube.com/vi/l0e9i8zXcIs/0.jpg" alt="Watch the video">
+</a>
 
 
 ## Why the shell ?
