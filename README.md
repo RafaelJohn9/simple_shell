@@ -2,7 +2,8 @@
 
 **Demo video**
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/l0e9i8zXcIs" frameborder="0" allowfullscreen></iframe>
+[![Watch the video](https://img.youtube.com/vi/l0e9i8zXcIs/0.jpg)](https://www.youtube.com/watch?v=l0e9i8zXcIs)
+
 
 ## Why the shell ?
 
