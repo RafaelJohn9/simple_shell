@@ -1,24 +1,25 @@
-# Project shell
+# Project Shell
 
-**Demo video**
+***Demo video***
 
-<video width="320" height="240" controls>
-  <source src="https://www.youtube.com/embed/l0e9i8zXcIs" type="video/mp4">
-</video>
-
+[![Watch the video](https://img.youtube.com/vi/l0e9i8zXcIs/0.jpg)](https://www.youtube.com/watch?v=l0e9i8zXcIs)
 
 ## Why the shell ?
 
-` What I cannot create, I do not understand.
+`What I cannot create, I do not understand.
 Know how to solve every problem that has been solved` ~ *Richard Feynman*
 
-For every philosophy there is some truth to  it and for this one I completely agree.
+For every philosophy there is some truth to  it and for this one we completely agree.
 
-A **shell** is a **Command Line-based Interface (CLI)** that enables the Operating System to communicate with the firmware inside a machine.
+A shell is a **Command Line Interface (CLI)** that allows users to **interact** with the **operating system**. It serves as an intermediary between the user and the operating system, enabling users:
+
+- to execute commands
+- run programs
+- and manage system resources.
 
 ----
 
-### With this project I learnt
+### With this project we learnt
 
 - how [processes are managed by the OS](https://www.geeksforgeeks.org/introduction-of-process-management/)
 
@@ -37,8 +38,8 @@ A **shell** is a **Command Line-based Interface (CLI)** that enables the Operati
 - [error handling](https://www.geeksforgeeks.org/error-handling-in-c/)
 
 ----
-As much as I  love [history](https://developer.ibm.com/tutorials/l-linux-shells/), am not trying to bore you with a lecture on it and so let's get started with project roadmap and structure.
+As much as we would love to dwelve into [history](https://developer.ibm.com/tutorials/l-linux-shells/), we are not trying to bore you with a lecture on it and so, let's get started with project roadmap and structure.
 
 ## Roadmap
 
-I created a *14-day roadmap* which I used to create a shell and I would like to share it since its simple and reduces the workload when it comes to research and creating your own shell.
+We created a *14-day roadmap* which we used to create a shell and we would like to share it since its simple and reduces the workload when it comes to research and creating your own shell.
