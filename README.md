@@ -83,7 +83,7 @@ Understanding these concepts is crucial for any software engineer as it lays the
 
 We hope this project serves as a practical and educational resource for those looking to deepen their knowledge of shell programming and operating system internals. Feel free to explore the code, experiment with modifications, and expand the functionality further. Happy coding!
 
-For any questions or contributions, please reach out through our [GitHub repository](https://github.com/your-repo-link).
+For any questions or contributions, please reach out through our [GitHub repository](https://github.com/RafaelJohn9/simple_shell).
 
 ----
 
