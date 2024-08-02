@@ -37,9 +37,34 @@ A shell is a **Command Line Interface (CLI)** that allows users to **interact** 
 )
 - [error handling](https://www.geeksforgeeks.org/error-handling-in-c/)
 
+- [environment variables](https://www.cs.purdue.edu/homes/bb/cs348/www-S08/unix_path.html)
+
 ----
-As much as we would love to dwelve into [history](https://developer.ibm.com/tutorials/l-linux-shells/), we are not trying to bore you with a lecture on it and so, let's get started with project roadmap and structure.
+As much as we would love to dwelve into [history](https://developer.ibm.com/tutorials/l-linux-shells/), we are not trying to bore you with a lecture on it and so, let's get started with project structure.
 
-## Roadmap
-
-We created a *14-day roadmap* which we used to create a shell and we would like to share it since its simple and reduces the workload when it comes to research and creating your own shell.
+```.
+├── allias.c ----------------> /* Creating alias operations  */
+├── changedir.c ----------------> /*  changing dir operations  */
+├── che.c ----------------> /* Check string operations  */
+├── envi.c ----------------> /*  Environment variables  Operations  low-level */
+├── envman.c ----------------> /* Environment variables operations more abstract layer */
+├── fun2.c ----------------> /* Utility operations */
+├── fun3.c ----------------> /* Utility operations */
+├── func1.c ----------------> /* Utility operations: free memory operation */
+├── func.c ----------------> /* Utility operations: Memory operations */
+├── hist.c ----------------> /* CRUD operations on history file */
+├── info.c ----------------> /* info_t struct operations CRUD */
+├── listing.c -------------> /* contains list CRUD operations */
+├── listman.c -------------> /* list operations */
+├── lowlv.c -------------> /* buffer operations */
+├── main.c ----------------> /* main loop starting point */
+├── main.h ----------------> /* header file */
+├── path.c ----------------> /* PATH operations */
+├── puttingf.c -------------> /* I/O operations */
+├── shell -------------> /* executable file (shell itself) */
+├── shell.c ---------------> /* main entry point of the file */
+├── strman2.c -------------> /* contains string operations functions */
+├── strman3.c -------------> /* contains string operations functions */
+├── strman4.c -------------> /* contains string operations functions */
+└── strman.c -------------> /* contains string operations functions */
+```

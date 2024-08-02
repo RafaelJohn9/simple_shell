@@ -9,38 +9,44 @@
  */
 int hsh(info_t *info, char **av)
 {
-	ssize_t r = 0;
-	int builtin_ret = 0;
+	/* Initialize variables */
+	ssize_t r = 0; /* Stores the return value of get_input() */
+	int builtin_ret = 0; /* Stores the return value of find_builtin() */
 
+	/* Main shell loop */
 	while (r != -1 && builtin_ret != -2)
 	{
-		clear_info(info);
-		if (interactive(info))
-			_puts("$ ");
-		_eputchar(BUF_FLUSH);
-		r = get_input(info);
+		clear_info(info); /* Clear the info struct */
+		if (interactive(info)) /* Check if shell is running in interactive mode */
+			_puts("$ "); /* Print the shell prompt */
+		_eputchar(BUF_FLUSH); /* Flush the output buffer */
+		r = get_input(info); /* Get user input */
 		if (r != -1)
 		{
-			set_info(info, av);
-			builtin_ret = find_builtin(info);
+			set_info(info, av); /* Set the info struct with command line arguments */
+			builtin_ret = find_builtin(info); /* Check if the command is a builtin */
 			if (builtin_ret == -1)
-				find_cmd(info);
+				find_cmd(info); /* Find and execute the command */
 		}
 		else if (interactive(info))
-			_putchar('\n');
-		free_info(info, 0);
+			_putchar('\n'); /* Print a \n if shell is in interactive mode */
+		free_info(info, 0); /* Free allocated memory in the info struct */
 	}
-	write_history(info);
-	free_info(info, 1);
+
+	write_history(info); /* Write command history to file */
+	free_info(info, 1); /* Free allocated memory in the info struct and exit */
+
 	if (!interactive(info) && info->status)
-		exit(info->status);
+		exit(info->status); /* Exit if in not in interactive mode */
+
 	if (builtin_ret == -2)
 	{
 		if (info->err_num == -1)
-			exit(info->status);
-		exit(info->err_num);
+			exit(info->status); /* Exit  if builtin signals exit() */
+		exit(info->err_num); /* Exit with error number if builtin signals exit */
 	}
-	return (builtin_ret);
+
+	return (builtin_ret); /* Return the final return value of the shell */
 }
 
 /**
